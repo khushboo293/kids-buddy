@@ -9,33 +9,6 @@ A gentle, offline **AI talking friend** that helps your child grow — through p
 - **Theme packs** included: Cars, Animals, School  
 - **Progress charts** + local JSON session logs  
 
-> This is a **home practice buddy**, not a diagnosis or therapy service.
-
----
-
-## 🌼 Why this helps
-Children learn best through **connection and play**. Kids Buddy models short, friendly sentences, asks one simple question at a time, and celebrates every attempt — so your child feels **safe, curious, and proud**.
-
-We practice:
-- 3–5 word sentences  
-- Taking turns in conversation  
-- Answering simple questions (what/where/feeling)  
-- Flexibility (reduces repetitive scripting)  
-
----
-
-## 🧭 How to use (daily)
-- 10–12 minutes, 4–5 days a week  
-- Sit together; let your child lead  
-- Use toys/drawing to anchor the conversation  
-- Praise effort: “You tried again — amazing!”  
-- Stop if tired/overwhelmed; keep it joyful
-
-**Example:**  
-Child: “Car go”  
-Buddy: “Car go! Yes! Let’s say: **The car is going fast!** Where is the car going?”
-
----
 
 ## 🛠️ Local setup (one-time)
 
