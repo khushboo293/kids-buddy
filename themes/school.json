@@ -1,0 +1,39 @@
+{
+  "name": "School",
+  "stickers": [
+    "🎒",
+    "✏️",
+    "📚",
+    "🧑‍🏫",
+    "🏫",
+    "📝",
+    "🧩"
+  ],
+  "sentence_models": [
+    "I am packing my bag.",
+    "The bell is ringing now.",
+    "I sit with my friend.",
+    "We read a big book.",
+    "The teacher is smiling."
+  ],
+  "two_choice_questions": [
+    "Math or art?",
+    "Sit or stand?",
+    "Lunch or play?",
+    "Front or back?"
+  ],
+  "scenarios": [
+    {
+      "name": "Morning Routine",
+      "prompt": "It’s school time. What should we pack?"
+    },
+    {
+      "name": "Classroom Talk",
+      "prompt": "We raise our hand. What can we ask?"
+    },
+    {
+      "name": "Playground",
+      "prompt": "It’s recess. Do we go to swing or slide?"
+    }
+  ]
+}

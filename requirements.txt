@@ -1,0 +1,10 @@
+streamlit
+requests
+Pillow
+faster-whisper
+matplotlib
+streamlit-webrtc
+av
+aiortc
+soundfile
+numpy

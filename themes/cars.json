@@ -1,0 +1,43 @@
+{
+  "name": "Cars",
+  "stickers": [
+    "🚗",
+    "🏎️",
+    "🚓",
+    "🛞",
+    "🛣️",
+    "⛽",
+    "🧽"
+  ],
+  "sentence_models": [
+    "The red car is fast.",
+    "I want the blue car.",
+    "The car goes to the park.",
+    "I am washing the car.",
+    "The car stops at the light."
+  ],
+  "two_choice_questions": [
+    "Park or home?",
+    "Fast or slow?",
+    "Red or blue?",
+    "Wash or drive?"
+  ],
+  "scenarios": [
+    {
+      "name": "Car Wash",
+      "prompt": "We are at the car wash. The car is dirty. What will we do?"
+    },
+    {
+      "name": "Race Track",
+      "prompt": "Two cars are racing. Who will win?"
+    },
+    {
+      "name": "Traffic Light",
+      "prompt": "The light is red. What should the car do?"
+    },
+    {
+      "name": "Gas Station",
+      "prompt": "The car is thirsty. Should we get fuel?"
+    }
+  ]
+}

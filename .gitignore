@@ -1,0 +1,18 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+
+# App data
+sessions/
+webrtc_recording.wav
+
+# Streamlit
+.streamlit/
+
+# IDE
+.vscode/
+.idea/

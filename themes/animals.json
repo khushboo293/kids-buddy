@@ -1,0 +1,40 @@
+{
+  "name": "Animals",
+  "stickers": [
+    "🐶",
+    "🐱",
+    "🦁",
+    "🐘",
+    "🦒",
+    "🐰",
+    "🐼",
+    "🐦"
+  ],
+  "sentence_models": [
+    "The dog is running.",
+    "I see a big lion.",
+    "The cat is sleeping.",
+    "The elephant drinks water.",
+    "The bird is on the tree."
+  ],
+  "two_choice_questions": [
+    "Dog or cat?",
+    "Big or small?",
+    "Run or sleep?",
+    "Zoo or farm?"
+  ],
+  "scenarios": [
+    {
+      "name": "At the Zoo",
+      "prompt": "We are at the zoo. Which animal do you want to see?"
+    },
+    {
+      "name": "Pet Care",
+      "prompt": "The puppy is thirsty. What should we do?"
+    },
+    {
+      "name": "Forest Walk",
+      "prompt": "We hear a bird. Where is it?"
+    }
+  ]
+}
