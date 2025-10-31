@@ -1,6 +1,6 @@
 # Kids Buddy — Parent Guide 💛
 
-A gentle, offline **AI talking friend** that helps your child grow from short phrases to confident 3–5 word sentences — through play, drawing, and simple conversations.
+A gentle, offline **AI talking friend** that helps your child grow — through play, drawing, and simple conversations.
 
 - 100% **local**: no API keys, no cloud calls while running  
 - **Ollama** for language + vision models (on your device)  
