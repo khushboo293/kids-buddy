@@ -1,58 +1,38 @@
-import base64, json, requests
+import json, requests, base64
 
-OLLAMA_CHAT_URL = "http://localhost:11434/api/chat"
+import os
+OLLAMA_GENERATE_URL = os.getenv("KIDS_BUDDY_OLLAMA", "http://127.0.0.1:11434") + "/api/generate"
 
-def _b64png(image_bytes: bytes):
-    import base64 as _b
-    return "data:image/png;base64," + _b.b64encode(image_bytes).decode("utf-8")
 
 def generate_text(system_prompt: str, user_prompt: str, model: str = "llama3.2:3b-instruct") -> str:
     try:
-        payload = {
-            "model": model,
-            "messages": [
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": user_prompt}
-            ],
-            "stream": False
-        }
-        resp = requests.post(OLLAMA_CHAT_URL, json=payload, timeout=120)
-        resp.raise_for_status()
-        data = resp.json()
-        content = data.get("message", {}).get("content", "").strip()
-        lines = [ln.strip() for ln in content.splitlines() if ln.strip()]
-        if len(lines) > 2:
-            lines = lines[:2]
-        return "\n".join(lines) if lines else content
+        payload = {"model": model, "system": system_prompt, "prompt": user_prompt, "stream": False}
+        r = requests.post(OLLAMA_GENERATE_URL, json=payload, timeout=120); r.raise_for_status()
+        text = (r.json().get("response") or "").strip()
+        lines = [ln.strip() for ln in text.splitlines() if ln.strip()]
+        if len(lines) > 2: lines = lines[:2]
+        return "\n".join(lines) if lines else text
     except Exception as e:
         return f"⚠️ Local model error: {e}"
 
+def _b64png(b: bytes) -> str:
+    return base64.b64encode(b).decode("utf-8")
+
 def vision_extract(image_bytes: bytes, model: str = "llava:7b"):
     try:
-        img_b64 = _b64png(image_bytes)
-        prompt = "List visible objects, colors, and the scene as strict JSON with keys: objects (list), colors (list), scene (string). Keep lists short. Do not invent unseen things."
-        payload = {
-            "model": model,
-            "messages": [
-                {"role": "user", "content": [
-                    {"type": "text", "text": prompt},
-                    {"type": "image_url", "image_url": {"url": img_b64}}
-                ]}
-            ],
-            "stream": False
-        }
-        resp = requests.post(OLLAMA_CHAT_URL, json=payload, timeout=180)
-        resp.raise_for_status()
-        content = resp.json().get("message", {}).get("content", "{}")
+        prompt = ("List visible objects, colors, and the scene as strict JSON with keys: "
+                  "objects (list), colors (list), scene (string). Keep lists short. Do not invent unseen things.")
+        payload = {"model": model, "prompt": prompt, "images": [_b64png(image_bytes)], "stream": False}
+        r = requests.post(OLLAMA_GENERATE_URL, json=payload, timeout=180); r.raise_for_status()
+        content = (r.json().get("response") or "").strip()
         try:
             data = json.loads(content)
         except Exception:
-            start = content.find("{")
-            end = content.rfind("}")
-            data = json.loads(content[start:end+1]) if start != -1 and end != -1 else {}
-        objects = data.get("objects") if isinstance(data.get("objects"), list) else None
-        colors = data.get("colors") if isinstance(data.get("colors"), list) else None
+            s, e = content.find("{"), content.rfind("}")
+            data = json.loads(content[s:e+1]) if s != -1 and e != -1 else {}
+        objs = data.get("objects") if isinstance(data.get("objects"), list) else None
+        cols = data.get("colors") if isinstance(data.get("colors"), list) else None
         scene = data.get("scene") if isinstance(data.get("scene"), str) else None
-        return objects, colors, scene
+        return objs, cols, scene
     except Exception:
         return None, None, None
